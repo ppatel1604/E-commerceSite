@@ -1,16 +1,16 @@
-import "./main.css";
+import './main.css';
 
-import React from "react";
-import ReactDOM from "react-dom";
-import { createStore, applyMiddleware } from "redux";
-import { Provider } from "react-redux";
-import { createBrowserHistory } from "history";
-import createRootReducer from "reducers";
-import thunk from "redux-thunk";
-import { routerMiddleware, ConnectedRouter } from "connected-react-router";
-import { composeWithDevTools } from "redux-devtools-extension";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import { createBrowserHistory } from 'history';
+import createRootReducer from 'reducers';
+import thunk from 'redux-thunk';
+import { routerMiddleware, ConnectedRouter } from 'connected-react-router';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-import Layout from "containers/layout";
+import routes from './node_modules/routes';
 
 const history = createBrowserHistory();
 const middlewares = [thunk, routerMiddleware(history)];
@@ -21,9 +21,7 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <Layout />
-    </ConnectedRouter>
+    <ConnectedRouter history={history}>{routes}</ConnectedRouter>
   </Provider>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
